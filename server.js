@@ -10,12 +10,7 @@ app.get('/bearer', (req, res) => {
 });
 
 app.get('/httponly', (req, res) => {
-  res.header("Set-Cookie", "HttpOnly; nyan=chu;")
-  res.sendFile(path.resolve(__dirname, 'index.html'));
-});
-
-app.get('/httponly/clear-cookie', (req, res) => {
-  res.header("Set-Cookie", "nyan=; HttpOnly; expires=Sat, 16-Sep-2017 02:41:12 GMT")
+  res.header("Set-Cookie", "nyan=chu; HttpOnly")
   res.sendFile(path.resolve(__dirname, 'index.html'));
 });
 
