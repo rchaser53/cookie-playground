@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      window.onload = () => {
+        document.querySelector('#aaa').addEventListener('click', () => {
+          fetch('/clear')
+            .then((ret) => {
+              return ret.text()
+            })
+            .then((ret) => {
+              console.log(ret)
+            })
+            .catch((err) => {
+              console.error(err)
+            })
+        })
+      }
+    </script>
+  </head>
+  <body>
+    <button id="aaa" >clear cookie</button>
+    <a href="./2">2</a>
+  </body>
+</html>
