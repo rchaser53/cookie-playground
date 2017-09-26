@@ -4,7 +4,7 @@
     <script>
       window.onload = () => {
         document.querySelector('#aaa').addEventListener('click', () => {
-          fetch('/clear')
+          fetch('/api/clear')
             .then((ret) => {
               return ret.text()
             })
@@ -15,11 +15,20 @@
               console.error(err)
             })
         })
+
+        document.querySelector('#bbb').addEventListener('click', () => {
+          document.cookie = "nyan=; expires=Sat, 16-Sep-2017 02:41:12 GMT";
+        })
       }
     </script>
   </head>
   <body>
     <button id="aaa" >clear cookie</button>
-    <a href="./2">2</a>
+    <button id="bbb" >clear cookie by js</button>
+    <a href="./bearer">bearer</a>
+    <a href="./httponly">httponly</a>
+    <a href="./httponly/clear-cookie">httponly/clear-cookie</a>
+    <a href="./clear-cookie">clear-cookie</a>
+    <a href="./no-cookie">no-cookie</a>
   </body>
 </html>

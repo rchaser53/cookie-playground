@@ -4,24 +4,34 @@ const express = require('express')
 const app = express();
 const server = require('http').createServer(app);
 
-app.get('/1', (req, res) => {
-  res.header("Set-Cookie", "nyan=chu")
+app.get('/bearer', (req, res) => {
+  res.header("Set-Cookie", "nyan=chu;")
   res.sendFile(path.resolve(__dirname, 'index.html'));
 });
 
-app.get('/clear', (req, res) => {
-  res.header("Set-Cookie", "nyan=; expires=Sat, 16-Sep-2017 02:41:12 GMT")
-  res.header('Access-Control-Allow-Origin', '*');
-  res.send("nyan");
+app.get('/httponly', (req, res) => {
+  res.header("Set-Cookie", "HttpOnly; nyan=chu;")
+  res.sendFile(path.resolve(__dirname, 'index.html'));
 });
 
-app.get('/2', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'index2.html'));
+app.get('/httponly/clear-cookie', (req, res) => {
+  res.header("Set-Cookie", "nyan=; HttpOnly; expires=Sat, 16-Sep-2017 02:41:12 GMT")
+  res.sendFile(path.resolve(__dirname, 'index.html'));
+});
+
+app.get('/clear-cookie', (req, res) => {
+  res.header("Set-Cookie", "nyan=; expires=Sat, 16-Sep-2017 02:41:12 GMT")
+  res.sendFile(path.resolve(__dirname, 'index.html'));
 });
 
 app.get('/no-cookie', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'index.html'));
+});
+
+app.get('/api/clear', (req, res) => {
   res.header("Set-Cookie", "nyan=; expires=Sat, 16-Sep-2017 02:41:12 GMT")
-  res.sendFile(path.resolve(__dirname, 'noCookie.html'));
+  res.header('Access-Control-Allow-Origin', '*');
+  res.send("nyan");
 });
 
 server.listen(3000, () => {
