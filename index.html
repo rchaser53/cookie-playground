@@ -19,6 +19,12 @@
         document.querySelector('#bbb').addEventListener('click', () => {
           document.cookie = "nyan=; expires=Sat, 16-Sep-2017 02:41:12 GMT";
         })
+
+        document.querySelector('#confirmButton').addEventListener('click', () => {
+          if(confirm('abc') === true) {
+            console.log('nyaa', 'gya-n')
+          }
+        })
       }
     </script>
   </head>
@@ -29,5 +35,8 @@
     <a href="./httponly">httponly</a>
     <a href="./clear-cookie">clear-cookie</a>
     <a href="./no-cookie">no-cookie</a>
+    <div>
+      <button id="confirmButton">confirm</button> 
+    </div>
   </body>
 </html>
